@@ -1,6 +1,6 @@
 /* Latihan-01 js */
 
-const outPut = '===== BIODATA ====='
+const outPut = '===== BIODATA =====';
 const myName = 'Nama : Azmi Abiyyu Sakha';
 let umurSaya = 'Umur : 17';
 const kota = 'Kota : Bekasi';
