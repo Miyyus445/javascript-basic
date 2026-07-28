@@ -1,8 +1,8 @@
 /* Latihan-03 */
 
-const namaProduk = 'Ram DDR4 8GB'
-const hargaSatuan = 200000
-const jumlahDibeli = 4
+const namaProduk = 'Ram DDR4 8GB';
+const hargaSatuan = 200000;
+const jumlahDibeli = 4;
 
 // Nama Produk
 console.log(namaProduk);
