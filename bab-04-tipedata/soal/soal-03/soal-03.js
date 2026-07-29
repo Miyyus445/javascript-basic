@@ -5,11 +5,11 @@ let dataUser = {
     umurSaya: 19,
     sekolahSaya: 'Pondok IT',
     jurusanSaya: 'Programer',
-    aktif: true
+    status: 'aktif'
 }
 
-console.log(dataUser.namaSaya);
-console.log(dataUser.umurSaya);
-console.log(dataUser.sekolahSaya);
-console.log(dataUser.jurusanSaya);
-console.log(dataUser.aktif);
+console.log(`Nama       : ${dataUser.namaSaya}`);
+console.log(`Umur       : ${dataUser.umurSaya}`);
+console.log(`Sekolah    : ${dataUser.sekolahSaya}`);
+console.log(`Jurusan    : ${dataUser.jurusanSaya}`);
+console.log(`Status     : ${dataUser.status}`);
