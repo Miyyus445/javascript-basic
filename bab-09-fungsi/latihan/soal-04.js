@@ -6,3 +6,4 @@ function hitungDiskon (harga, diskon = 10) {
 }
 
 hitungDiskon (100000);
+hitungDiskon (100000, 25)
