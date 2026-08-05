@@ -1,4 +1,4 @@
-/* Soal-12 - Challenge Kalkulator*/
+/* Soal-12 - Challenge Kalkulator */
 
 const tambah = (a, b) => a + b;
 const kurang = (c, d) => c - d;
