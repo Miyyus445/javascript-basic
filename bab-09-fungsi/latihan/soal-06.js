@@ -1,7 +1,7 @@
 /* Soal-06 */
 
-function luasPersegiPanjang (a, b) {
-    return a * b;
+function luasPersegiPanjang (panjang, lebar) {
+    return panjang * lebar;
 }
 
 let hasilLuasPersegiPanjang = luasPersegiPanjang(10, 4)
