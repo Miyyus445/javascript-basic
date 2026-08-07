@@ -7,5 +7,8 @@ const laptop = {
 };
 
 for (let toko in laptop) {
+    //menampilkan properti
     console.log(toko);
+    //menampilkan value/nilai
+    console.log(laptop[toko]);
 }
