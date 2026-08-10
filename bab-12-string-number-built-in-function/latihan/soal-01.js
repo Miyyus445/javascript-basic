@@ -1,3 +1,5 @@
+/* Soal 1 */
+
 const nama = "budi santoso";
 
 const namaUpperCase = nama.toUpperCase();
