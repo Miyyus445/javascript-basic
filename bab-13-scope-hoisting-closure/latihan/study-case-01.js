@@ -1,4 +1,4 @@
-/* Study Case 01 */
+/* Study Case 01 - Sistem Login */
 
 // function prosesLogin() {
 //   const tokenSesi = "abc123";
