@@ -28,8 +28,8 @@ function buatRekening(saldoAwal) {
   };
 }
 
-const rekeningAttair = buatRekening(100000); // Saldo awal 100000
+const rekening = buatRekening(100000); // Saldo awal 100000
 
-rekeningAttair.cekSaldo();       // Output: Saldo Awal: 100000
-rekeningAttair.setor(50000);     // Output: Setor berhasil! Saldo sekarang: 150000
-rekeningAttair.tarik(30000);     // Output: Penarikan berhasil! Saldo tersisa: 120000
+rekening.cekSaldo();       // Output: Saldo Awal: 100000
+rekening.setor(50000);     // Output: Setor berhasil! Saldo sekarang: 150000
+rekening.tarik(30000);     // Output: Penarikan berhasil! Saldo tersisa: 120000
