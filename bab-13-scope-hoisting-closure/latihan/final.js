@@ -1,4 +1,4 @@
-/* FINAL */
+/* Final Challenge - Sistem Akun Pengguna */
 
 function buatAkun(nama, saldoAwal) {
   let saldo = saldoAwal;
