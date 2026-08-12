@@ -1,4 +1,4 @@
-/* Study Case 02 */
+/* Study Case 02 - Sistem Rekening Bank */
 
 function buatRekening(saldoAwal) {
   let saldo = saldoAwal;
