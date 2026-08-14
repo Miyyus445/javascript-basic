@@ -1,4 +1,4 @@
-/* Study Case 01 */
+/* Study Case 01 - Sistem Profil Pengguna */
 
 const pengguna = {
   nama: "Budi Santoso",
