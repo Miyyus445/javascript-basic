@@ -17,7 +17,7 @@ function tampilkanTim(namaTim, ...anggota) {
   const [ketua, wakil] = anggota;
 
   console.log("=============================");
-  console.log(`      ${namaTim.toUpperCase()}      `);
+  console.log(`       ${namaTim.toUpperCase()}      `);
   console.log("=============================\n");
 
   anggota.forEach((nama, index) => {
