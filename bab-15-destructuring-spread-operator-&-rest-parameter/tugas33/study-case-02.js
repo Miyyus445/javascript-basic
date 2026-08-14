@@ -1,4 +1,4 @@
-/* Study Case 02 */
+/* Study Case 02 - Sistem Keranjang Belanja */
 
 const keranjangA = [
   "Keyboard",
