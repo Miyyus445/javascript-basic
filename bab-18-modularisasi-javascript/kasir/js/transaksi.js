@@ -1,20 +1,20 @@
 /* Transaksi */
 
-// format rupiah
+// Format Rupiah (Default Export)
 export default function formatRupiah(harga) {
-    return new Intl.NumberFormat("id-ID", {
-        style: "currency",
-        currency: "IDR",
-        maximumFractionDigits: 0 
-    }).format(harga);
+  return new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+    maximumFractionDigits: 0
+  }).format(harga);
 }
 
-// hitung subtotal
+// Hitung Subtotal
 export function hitungSubtotal(harga, jumlah) {
-    return harga * jumlah;
+  return harga * jumlah;
 }
 
-// hitung total
+// Hitung Total
 export function hitungTotal(daftarTransaksi) {
-    return daftarTransaksi.reduce((total, item) => total + item.subtotal, 0);
+  return daftarTransaksi.reduce((total, item) => total + item.subtotal, 0);
 }

@@ -1,6 +1,6 @@
 /* Data Produk */
 
-// named export
+// Named export
 export const produk = [
   {
     id: 1,
@@ -17,8 +17,13 @@ export const produk = [
     nama: "Headset",
     harga: 300000,
   },
+  {
+    id: 4,
+    nama: "Webcam",
+    harga: 450000,
+  },
 ];
 
 export function cariProduk(id) {
-    return produk.find((item) => item.id === id);
-};
+  return produk.find((item) => item.id === id);
+}
