@@ -1,11 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistem Dashboard Santri</title>
+    <link rel="stylesheet" href="./tugas-37.css">
 </head>
+
 <body>
-    
+    <section>
+        <h1>Sistem Dashboard Santri</h1>
+
+        <div class="control-box">
+            <input type="text" id="input-cari" placeholder="Cari aktivitas..." />
+            <button id="btn-tema">🌙 Mode Gelap</button>
+        </div>
+
+        <p id="notifikasi" class="notif-pesan"></p>
+
+        <div id="view-daftar">
+            <!-- Data Santri -->
+            <div class="info-santri">
+                <p>Nama     : <span id="nama"></span></p>
+                <p>Kelas    : <span id="kelas"></span></p>
+                <p>Status   : <span id="status"></span></p>
+            </div>
+
+            <!-- Aktivitas Santri -->
+            <h2>Daftar Aktivitas</h2>
+            <ul class="aktivitas">
+                <!-- Diisi otomatis oleh JS -->
+            </ul>
+        </div>
+
+        <div id="view-detail" class="view-detail">
+            <button id="btn-kembali">← Kembali</button>
+            <h2 class="view-detail-h2">Detail Aktivitas</h2>
+            <div class="detail-box">
+                <p>Aktivitas : <span id="detail-nama"></span></p>
+                <p>Santri    : <span id="detail-santri"></span></p>
+                <p>Waktu     : <span id="detail-waktu"></span></p>
+            </div>
+            <button id="btn-salin">Salin Info Aktivitas</button>
+        </div>
+    </section>
+    <script src="./tugas-37.js"></script>
 </body>
+
 </html>
