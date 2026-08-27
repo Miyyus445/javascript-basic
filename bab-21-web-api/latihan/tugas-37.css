@@ -1,4 +1,165 @@
 * {
-    padding: 0;
     margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+body {
+    background-color: #f4f6f9;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* Mode Gelap */
+body.dark-mode {
+    background-color: #121824;
+    color: #f0f0f0;
+}
+
+section {
+    background-color: #ffffff;
+    padding: 24px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 480px;
+}
+
+body.dark-mode section {
+    background-color: #1e2738;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
+
+h1 {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 16px;
+    border-bottom: 2px solid #eee;
+    padding-bottom: 8px;
+}
+
+body.dark-mode h1 {
+    color: #38bdf8;
+    border-bottom-color: #334155;
+}
+
+/* Control Box (Input & Toggle Tema) */
+.control-box {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 16px;
+}
+
+#input-cari {
+    flex: 1;
+    padding: 8px 12px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    outline: none;
+}
+
+body.dark-mode #input-cari {
+    background-color: #0f172a;
+    border-color: #334155;
+    color: #fff;
+}
+
+#btn-tema, #btn-kembali, #btn-salin {
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 12px;
+}
+
+#btn-tema:hover, #btn-kembali:hover, #btn-salin:hover {
+    background-color: #1a252f;
+}
+
+.notif-pesan {
+    font-size: 13px;
+    color: #e67e22;
+    margin-bottom: 10px;
+}
+
+.info-santri {
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 6px;
+}
+
+body.dark-mode p {
+    color: #94a3b8;
+}
+
+span {
+    font-weight: bold;
+    color: #2c3e50;
+}
+
+body.dark-mode span {
+    color: #38bdf8;
+}
+
+h2 {
+    font-size: 16px;
+    color: #444;
+    margin-bottom: 12px;
+}
+
+body.dark-mode h2 {
+    color: #cbd5e1;
+}
+
+ul.aktivitas {
+    list-style: none;
+}
+
+ul.aktivitas li {
+    background-color: #f8f9fa;
+    border: 1px solid #e9ecef;
+    padding: 10px 12px;
+    border-radius: 6px;
+    margin-bottom: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 14px;
+}
+
+body.dark-mode ul.aktivitas li {
+    background-color: #0f172a;
+    border-color: #334155;
+}
+
+/* Styling Tombol Hapus & Favorit */
+ul.aktivitas button {
+    background-color: #e74c3c;
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: background 0.2s;
+}
+
+ul.aktivitas button:hover {
+    background-color: #c0392b;
+}
+
+.detail-box {
+    margin-bottom: 16px;
 }
