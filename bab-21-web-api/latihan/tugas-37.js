@@ -1,7 +1,7 @@
 (function () {
     "use strict";
 
-    // Data
+    // Data Default
     const santriDefault = {
         nama: "Budi Santoso",
         kelas: "XI RPL",
@@ -195,7 +195,11 @@
     window.addEventListener("popstate", (e) => {
         if (e.state && e.state.page === "detail" && e.state.id !== undefined) {
             const teks = daftarAktivitas[e.state.id];
-            if (teks) tampilkanDetail(teks, e.state.id, false);
+            if (teks) {
+                tampilkanDetail(teks, e.state.id, false);
+            } else {
+                tampilkanDaftar(false);
+            }
         } else {
             tampilkanDaftar(false);
         }

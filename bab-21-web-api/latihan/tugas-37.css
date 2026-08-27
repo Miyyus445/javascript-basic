@@ -49,7 +49,7 @@ body.dark-mode h1 {
     border-bottom-color: #334155;
 }
 
-/* Control Box (Input & Toggle Tema) */
+/* Control Box */
 .control-box {
     display: flex;
     gap: 10px;
@@ -158,6 +158,10 @@ ul.aktivitas button {
 
 ul.aktivitas button:hover {
     background-color: #c0392b;
+}
+
+.view-detail {
+    display: none;
 }
 
 .detail-box {
