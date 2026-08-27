@@ -1,40 +1,25 @@
 (function () {
     "use strict";
 
-    // Data Default
-    const santriDefault = {
-        nama: "Budi Santoso",
-        kelas: "XI RPL",
-        status: "Aktif"
-    };
-
-    const aktivitasDefault = [
-        "Login ke aplikasi",
-        "Membaca materi JavaScript",
-        "Mengerjakan latihan",
-        "Mengumpulkan tugas"
-    ];
-
     // Elemen DOM
-    const namaEl = document.querySelector("#nama");
-    const kelasEl = document.querySelector("#kelas");
-    const statusEl = document.querySelector("#status");
-    const aktivitasEl = document.querySelector(".aktivitas");
-
     const viewDaftar = document.querySelector("#view-daftar");
     const viewDetail = document.querySelector("#view-detail");
+    const userCardContainer = document.querySelector("#user-card-container");
     const inputCari = document.querySelector("#input-cari");
     const btnTema = document.querySelector("#btn-tema");
     const notifikasiEl = document.querySelector("#notifikasi");
     const btnKembali = document.querySelector("#btn-kembali");
-    const btnSalin = document.querySelector("#btn-salin");
+    const btnSalinEmail = document.querySelector("#btn-salin-email");
 
     const detailNama = document.querySelector("#detail-nama");
-    const detailSantri = document.querySelector("#detail-santri");
-    const detailWaktu = document.querySelector("#detail-waktu");
+    const detailEmail = document.querySelector("#detail-email");
+    const detailTelepon = document.querySelector("#detail-telepon");
+    const detailWebsite = document.querySelector("#detail-website");
+    const detailPerusahaan = document.querySelector("#detail-perusahaan");
+    const detailAlamat = document.querySelector("#detail-alamat");
 
-    let daftarAktivitas = [];
-    let favoritList = JSON.parse(localStorage.getItem("favoritAktivitas")) || [];
+    let usersData = [];
+    let favoritList = JSON.parse(localStorage.getItem("favoritUsers")) || [];
     let temaSaatIni = localStorage.getItem("temaSantri") || "terang";
 
     function terapkanTema(tema) {
@@ -53,135 +38,121 @@
         terapkanTema(temaSaatIni === "terang" ? "gelap" : "terang");
     });
 
-    function panggilDataServer() {
-        return new Promise((resolve) => {
-            setTimeout(() => {
-                resolve({
-                    santri: santriDefault,
-                    aktivitas: aktivitasDefault
-                });
-            }, 800);
-        });
-    }
-
-    async function muatDataDashboard() {
-        const cacheAktivitas = localStorage.getItem("aktivitasCache");
-        if (cacheAktivitas) {
-            daftarAktivitas = JSON.parse(cacheAktivitas);
-            renderDashboard(santriDefault, daftarAktivitas);
+    async function muatDataUsers() {
+        const cacheUsers = localStorage.getItem("usersData");
+        if (cacheUsers) {
+            usersData = JSON.parse(cacheUsers);
+            renderUserCards(usersData);
         } else {
-            notifikasiEl.textContent = "Memuat data santri...";
+            notifikasiEl.textContent = "Memuat data...";
         }
 
         try {
-            const res = await panggilDataServer();
-            daftarAktivitas = res.aktivitas;
+            const response = await fetch("https://jsonplaceholder.typicode.com/users");
+            
+            if (!response.ok) {
+                throw new Error("Gagal mengambil data dari server.");
+            }
 
-            localStorage.setItem("aktivitasCache", JSON.stringify(res.aktivitas));
+            const freshData = await response.json();
+            usersData = freshData;
+
+            localStorage.setItem("usersData", JSON.stringify(freshData));
             notifikasiEl.textContent = "";
 
-            renderDashboard(res.santri, daftarAktivitas);
+            renderUserCards(usersData);
         } catch (error) {
-            notifikasiEl.textContent = "Gagal memuat data!";
+            if (!cacheUsers) {
+                notifikasiEl.textContent = "⚠️ Terjadi kesalahan koneksi. Silakan periksa jaringan Anda.";
+            }
         }
     }
 
-    function renderDashboard(dataSantri, listAktivitas) {
-        namaEl.textContent = dataSantri.nama;
-        kelasEl.textContent = dataSantri.kelas;
-        statusEl.textContent = dataSantri.status;
+    function renderUserCards(data) {
+        userCardContainer.innerHTML = "";
 
-        renderAktivitasList(listAktivitas);
-    }
-
-    function renderAktivitasList(list) {
-        aktivitasEl.innerHTML = "";
-
-        if (list.length === 0) {
-            aktivitasEl.innerHTML = "<li>Aktivitas tidak ditemukan</li>";
+        if (data.length === 0) {
+            userCardContainer.innerHTML = "<p>Pengguna tidak ditemukan.</p>";
             return;
         }
 
-        list.forEach((teks, index) => {
-            const liBaru = document.createElement("li");
+        data.forEach((user) => {
+            const isFav = favoritList.includes(user.id);
 
-            const isFav = favoritList.includes(teks);
-            const spanTeks = document.createElement("span");
-            spanTeks.textContent = `${isFav ? "★ " : ""}${teks}`;
-            spanTeks.style.cursor = "pointer";
+            const card = document.createElement("div");
+            card.className = "user-card";
 
-            spanTeks.addEventListener("click", () => {
-                tampilkanDetail(teks, index, true);
+            card.innerHTML = `
+                <div class="user-card-header">
+                    <span class="user-name">${user.name}</span>
+                    <button class="btn-fav">${isFav ? "★" : "☆"}</button>
+                </div>
+                <p class="user-email">✉️ ${user.email}</p>
+                <p class="user-company">🏢 ${user.company.name}</p>
+            `;
+
+            card.addEventListener("click", (e) => {
+                // Biar kalau nge-klik tombol favorit gak ikut ngebuka detail
+                if (e.target.classList.contains("btn-fav")) return;
+                tampilkanDetailUser(user.id, true);
             });
 
-            const actionGroup = document.createElement("div");
-
-            const btnFav = document.createElement("button");
-            btnFav.textContent = isFav ? "Batal ★" : "★";
-            btnFav.style.backgroundColor = isFav ? "#f39c12" : "#3498db";
-            btnFav.style.marginRight = "6px";
-
+            const btnFav = card.querySelector(".btn-fav");
             btnFav.addEventListener("click", (e) => {
                 e.stopPropagation();
-                toggleFavorit(teks);
+                toggleFavorit(user.id);
             });
 
-            const btnHapus = document.createElement("button");
-            btnHapus.textContent = "Hapus";
-            btnHapus.addEventListener("click", (e) => {
-                e.stopPropagation();
-                daftarAktivitas.splice(index, 1);
-                localStorage.setItem("aktivitasCache", JSON.stringify(daftarAktivitas));
-                renderAktivitasList(daftarAktivitas);
-            });
-
-            actionGroup.appendChild(btnFav);
-            actionGroup.appendChild(btnHapus);
-
-            liBaru.appendChild(spanTeks);
-            liBaru.appendChild(actionGroup);
-
-            aktivitasEl.appendChild(liBaru);
+            userCardContainer.appendChild(card);
         });
     }
 
-    function toggleFavorit(teks) {
-        if (favoritList.includes(teks)) {
-            favoritList = favoritList.filter((item) => item !== teks);
+    function toggleFavorit(userId) {
+        if (favoritList.includes(userId)) {
+            favoritList = favoritList.filter((id) => id !== userId);
         } else {
-            favoritList.push(teks);
+            favoritList.push(userId);
         }
-        localStorage.setItem("favoritAktivitas", JSON.stringify(favoritList));
-        renderAktivitasList(daftarAktivitas);
+        localStorage.setItem("favoritUsers", JSON.stringify(favoritList));
+
+        const keyword = inputCari.value.toLowerCase().trim();
+        const hasilFilter = usersData.filter((u) => u.name.toLowerCase().includes(keyword));
+        renderUserCards(hasilFilter);
     }
 
     inputCari.addEventListener("input", () => {
         const keyword = inputCari.value.toLowerCase().trim();
-        const hasilFilter = daftarAktivitas.filter((item) =>
-            item.toLowerCase().includes(keyword)
+        const hasilFilter = usersData.filter((user) =>
+            user.name.toLowerCase().includes(keyword)
         );
-        renderAktivitasList(hasilFilter);
+        renderUserCards(hasilFilter);
     });
 
-    function tampilkanDetail(teks, id, pushState = true) {
-        detailNama.textContent = teks;
-        detailSantri.textContent = santriDefault.nama + " (" + santriDefault.kelas + ")";
-        detailWaktu.textContent = new Date().toLocaleDateString("id-ID");
+    function tampilkanDetailUser(userId, pushState = true) {
+        const user = usersData.find((u) => u.id === userId);
+        if (!user) return;
 
-        btnSalin.onclick = async () => {
-            await navigator.clipboard.writeText(`${teks} - ${santriDefault.nama}`);
-            alert("Info aktivitas berhasil disalin!");
+        detailNama.textContent = user.name;
+        detailEmail.textContent = user.email;
+        detailTelepon.textContent = user.phone;
+        detailWebsite.textContent = user.website;
+        detailPerusahaan.textContent = user.company.name;
+        detailAlamat.textContent = `${user.address.street}, ${user.address.suite}, ${user.address.city} (${user.address.zipcode})`;
+
+        btnSalinEmail.onclick = async () => {
+            await navigator.clipboard.writeText(user.email);
+            alert("Email berhasil disalin ke clipboard!");
         };
 
         viewDaftar.style.display = "none";
         viewDetail.style.display = "block";
 
         if (pushState) {
-            history.pushState({ page: "detail", id: id }, "", `/aktivitas/${id}`);
+            history.pushState({ page: "detail", id: userId }, "", `/user/${userId}`);
         }
     }
 
-    function tampilkanDaftar(pushState = true) {
+    function tampilkanDaftarUser(pushState = true) {
         viewDetail.style.display = "none";
         viewDaftar.style.display = "block";
 
@@ -190,22 +161,17 @@
         }
     }
 
-    btnKembali.addEventListener("click", () => tampilkanDaftar(true));
+    btnKembali.addEventListener("click", () => tampilkanDaftarUser(true));
 
     window.addEventListener("popstate", (e) => {
-        if (e.state && e.state.page === "detail" && e.state.id !== undefined) {
-            const teks = daftarAktivitas[e.state.id];
-            if (teks) {
-                tampilkanDetail(teks, e.state.id, false);
-            } else {
-                tampilkanDaftar(false);
-            }
+        if (e.state && e.state.page === "detail" && e.state.id) {
+            tampilkanDetailUser(e.state.id, false);
         } else {
-            tampilkanDaftar(false);
+            tampilkanDaftarUser(false);
         }
     });
 
     terapkanTema(temaSaatIni);
-    muatDataDashboard();
+    muatDataUsers();
 
 })();

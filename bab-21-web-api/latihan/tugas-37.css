@@ -1,169 +1,293 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    transition: background-color 0.2s, color 0.2s;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, sans-serif;
+  transition: background-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              border-color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              color 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              box-shadow 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+              transform 0.2s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 body {
-    background-color: #f4f6f9;
-    color: #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh;
-    padding: 20px;
+  background-color: #f1f5f9;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.08) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.08) 0px, transparent 50%);
+  color: #0f172a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding: 24px 16px;
 }
 
-/* Mode Gelap */
+/* DARK MODE BODY */
 body.dark-mode {
-    background-color: #121824;
-    color: #f0f0f0;
+  background-color: #090d16;
+  background-image: 
+    radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.12) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.12) 0px, transparent 50%);
+  color: #f8fafc;
 }
 
 section {
-    background-color: #ffffff;
-    padding: 24px;
-    border-radius: 12px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    width: 100%;
-    max-width: 480px;
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  padding: 28px;
+  border-radius: 20px;
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.05), 
+              0 8px 10px -6px rgba(15, 23, 42, 0.01);
+  width: 100%;
+  max-width: 520px;
 }
 
 body.dark-mode section {
-    background-color: #1e2738;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  background: rgba(15, 23, 42, 0.75);
+  border-color: rgba(30, 41, 59, 0.8);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
+/* TITLE UTAMA */
 h1 {
-    font-size: 20px;
-    color: #333;
-    margin-bottom: 16px;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 8px;
+  font-size: 1.35rem;
+  font-weight: 800;
+  letter-spacing: -0.5px;
+  color: #0284c7;
+  margin-bottom: 20px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid #e2e8f0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 body.dark-mode h1 {
-    color: #38bdf8;
-    border-bottom-color: #334155;
+  color: #38bdf8;
+  border-bottom-color: #1e293b;
 }
 
-/* Control Box */
+/* CONTROL BOX */
 .control-box {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 16px;
+  display: flex;
+  gap: 10px;
+  margin-bottom: 20px;
 }
 
 #input-cari {
-    flex: 1;
-    padding: 8px 12px;
-    border: 1px solid #ccc;
-    border-radius: 6px;
-    outline: none;
+  flex: 1;
+  padding: 10px 16px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  color: #0f172a;
+  outline: none;
 }
 
 body.dark-mode #input-cari {
-    background-color: #0f172a;
-    border-color: #334155;
-    color: #fff;
+  background: #0b0f19;
+  border-color: #1e293b;
+  color: #f8fafc;
 }
 
-#btn-tema, #btn-kembali, #btn-salin {
-    background-color: #2c3e50;
-    color: white;
-    border: none;
-    padding: 8px 12px;
-    border-radius: 6px;
-    cursor: pointer;
-    font-size: 12px;
+#input-cari:focus {
+  border-color: #0284c7;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
 }
 
-#btn-tema:hover, #btn-kembali:hover, #btn-salin:hover {
-    background-color: #1a252f;
+body.dark-mode #input-cari:focus {
+  border-color: #38bdf8;
+  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
 }
 
+/* TOMBOL AKSIS UTAMA */
+#btn-tema, #btn-kembali, #btn-salin-email {
+  background: #0f172a;
+  color: #ffffff;
+  border: none;
+  padding: 10px 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+}
+
+#btn-tema:hover, #btn-kembali:hover, #btn-salin-email:hover {
+  background: #0284c7;
+  transform: translateY(-1px);
+}
+
+body.dark-mode #btn-tema, 
+body.dark-mode #btn-kembali, 
+body.dark-mode #btn-salin-email {
+  background: #1e293b;
+  color: #f8fafc;
+}
+
+body.dark-mode #btn-tema:hover, 
+body.dark-mode #btn-kembali:hover, 
+body.dark-mode #btn-salin-email:hover {
+  background: #38bdf8;
+  color: #090d16;
+}
+
+/* NOTIFIKASI */
 .notif-pesan {
-    font-size: 13px;
-    color: #e67e22;
-    margin-bottom: 10px;
-}
-
-.info-santri {
-    margin-bottom: 20px;
-}
-
-p {
-    font-size: 14px;
-    color: #555;
-    margin-bottom: 6px;
-}
-
-body.dark-mode p {
-    color: #94a3b8;
-}
-
-span {
-    font-weight: bold;
-    color: #2c3e50;
-}
-
-body.dark-mode span {
-    color: #38bdf8;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #f59e0b;
+  margin-bottom: 14px;
 }
 
 h2 {
-    font-size: 16px;
-    color: #444;
-    margin-bottom: 12px;
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #64748b;
+  margin-bottom: 14px;
 }
 
 body.dark-mode h2 {
-    color: #cbd5e1;
+  color: #94a3b8;
 }
 
-ul.aktivitas {
-    list-style: none;
+/* KARTU PENGGUNA LIST */
+.card-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-ul.aktivitas li {
-    background-color: #f8f9fa;
-    border: 1px solid #e9ecef;
-    padding: 10px 12px;
-    border-radius: 6px;
-    margin-bottom: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 14px;
+.user-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  padding: 14px 18px;
+  border-radius: 12px;
+  cursor: pointer;
 }
 
-body.dark-mode ul.aktivitas li {
-    background-color: #0f172a;
-    border-color: #334155;
+body.dark-mode .user-card {
+  background: #0b0f19;
+  border-color: #1e293b;
 }
 
-/* Styling Tombol Hapus & Favorit */
-ul.aktivitas button {
-    background-color: #e74c3c;
-    color: white;
-    border: none;
-    padding: 6px 10px;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 12px;
-    transition: background 0.2s;
+.user-card:hover {
+  transform: translateY(-2px);
+  border-color: #0284c7;
+  box-shadow: 0 10px 15px -3px rgba(2, 132, 199, 0.1);
 }
 
-ul.aktivitas button:hover {
-    background-color: #c0392b;
+body.dark-mode .user-card:hover {
+  border-color: #38bdf8;
+  box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.15);
+}
+
+.user-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.user-name {
+  font-weight: 700;
+  color: #0f172a;
+  font-size: 0.95rem;
+}
+
+body.dark-mode .user-name {
+  color: #f8fafc;
+}
+
+/* BINTANG FAVORIT */
+.btn-fav {
+  background: none;
+  border: none;
+  font-size: 1.25rem;
+  color: #f59e0b;
+  cursor: pointer;
+  line-height: 1;
+  padding: 2px 4px;
+  border-radius: 6px;
+}
+
+.btn-fav:hover {
+  transform: scale(1.2);
+}
+
+.user-email, .user-company {
+  font-size: 0.82rem;
+  color: #64748b;
+  margin-bottom: 3px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+body.dark-mode .user-email, 
+body.dark-mode .user-company {
+  color: #94a3b8;
 }
 
 .view-detail {
-    display: none;
+  display: none;
 }
 
 .detail-box {
-    margin-bottom: 16px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 16px;
+  margin: 16px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+body.dark-mode .detail-box {
+  background: #0b0f19;
+  border-color: #1e293b;
+}
+
+.detail-box p {
+  font-size: 0.88rem;
+  color: #64748b;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed #e2e8f0;
+  padding-bottom: 6px;
+}
+
+body.dark-mode .detail-box p {
+  color: #94a3b8;
+  border-bottom-color: #1e293b;
+}
+
+.detail-box p:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.detail-box span {
+  font-weight: 600;
+  color: #0f172a;
+  text-align: right;
+  max-width: 60%;
+}
+
+body.dark-mode .detail-box span {
+  color: #38bdf8;
+}
+
+#btn-salin-email {
+  width: 100%;
 }
