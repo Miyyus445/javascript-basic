@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard API</title>
+    <link rel="stylesheet" href="./tugas-38.css">
+</head>
+
+<body>
+    <section>
+        <h1>User Dashboard</h1>
+
+        <div class="control-box">
+            <input type="text" id="input-cari" placeholder="Cari nama pengguna..." />
+            <button id="btn-tema">🌙 Mode Gelap</button>
+        </div>
+
+        <p id="notifikasi" class="notif-pesan"></p>
+
+        <div id="view-daftar">
+            <h2>Daftar Pengguna</h2>
+            <div id="user-card-container" class="card-container">
+                <!-- Dimuat via JavaScript -->
+            </div>
+        </div>
+
+        <div id="view-detail" class="view-detail">
+            <button id="btn-kembali">← Kembali</button>
+            <h2>Detail Pengguna</h2>
+            <div class="detail-box">
+                <p>Nama       : <span id="detail-nama"></span></p>
+                <p>Email      : <span id="detail-email"></span></p>
+                <p>Telepon    : <span id="detail-telepon"></span></p>
+                <p>Website    : <span id="detail-website"></span></p>
+                <p>Perusahaan : <span id="detail-perusahaan"></span></p>
+                <p>Alamat     : <span id="detail-alamat"></span></p>
+            </div>
+            <button id="btn-salin-email">Salin Email</button>
+        </div>
+    </section>
+
+    <script src="./tugas-38.js"></script>
+</body>
+
+</html>
