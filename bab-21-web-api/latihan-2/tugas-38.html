@@ -26,6 +26,34 @@
             </div>
         </div>
 
+        <div class="blog-section" id="blog-section">
+            <h2>Kelola Artikel (Blog)</h2>
+
+            <form id="article-form" class="article-form">
+                <input type="hidden" id="article-id" value="" />
+                <div id="">
+                    <input type="text" id="article-title" class="article-title" placeholder="Judul Artikel..." required />
+                </div>
+                <div id="">
+                    <textarea id="article-body" class="article-body" rows="3" placeholder="Isi Artikel..." required></textarea>
+                </div>
+                <div id="btn-article">
+                    <button type="submit" id="btn-submit-article" class="btn-submit-article">Simpan Artikel</button>
+                    <button type="button" id="btn-cancel-article" class="btn-cancel-article">Batal Edit</button>
+                </div>
+            </form>
+
+            <div class="div-cari-article">
+                <input type="text" id="input-cari-article" class="input-cari-article" placeholder="🔍 Cari judul artikel...">
+            </div>
+
+            <p id="notif-article" class="notif-pesan"></p>
+
+            <div id="article-list-container" class="card-conatainer">
+                <!-- Artikel dimuat lewat JS -->
+            </div>
+        </div>
+
         <div id="view-detail" class="view-detail">
             <button id="btn-kembali">← Kembali</button>
             <h2>Detail Pengguna</h2>
