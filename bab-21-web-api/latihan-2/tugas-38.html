@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>User Dashboard API</title>
+    <title>User Dashboard & Simple Blog</title>
     <link rel="stylesheet" href="./tugas-38.css">
 </head>
 
@@ -19,6 +19,7 @@
 
         <p id="notifikasi" class="notif-pesan"></p>
 
+        <!-- VIEW DAFTAR PENGGUNA -->
         <div id="view-daftar">
             <h2>Daftar Pengguna</h2>
             <div id="user-card-container" class="card-container">
@@ -26,20 +27,21 @@
             </div>
         </div>
 
+        <!-- BLOG SECTION (FITUR BARU) -->
         <div class="blog-section" id="blog-section">
             <h2>Kelola Artikel (Blog)</h2>
 
             <form id="article-form" class="article-form">
                 <input type="hidden" id="article-id" value="" />
-                <div id="">
+                <div class="form-group">
                     <input type="text" id="article-title" class="article-title" placeholder="Judul Artikel..." required />
                 </div>
-                <div id="">
+                <div class="form-group">
                     <textarea id="article-body" class="article-body" rows="3" placeholder="Isi Artikel..." required></textarea>
                 </div>
-                <div id="btn-article">
+                <div id="btn-article" class="btn-article-group">
                     <button type="submit" id="btn-submit-article" class="btn-submit-article">Simpan Artikel</button>
-                    <button type="button" id="btn-cancel-article" class="btn-cancel-article">Batal Edit</button>
+                    <button type="button" id="btn-cancel-article" class="btn-cancel-article" style="display: none;">Batal Edit</button>
                 </div>
             </form>
 
@@ -49,11 +51,12 @@
 
             <p id="notif-article" class="notif-pesan"></p>
 
-            <div id="article-list-container" class="card-conatainer">
+            <div id="article-list-container" class="card-container">
                 <!-- Artikel dimuat lewat JS -->
             </div>
         </div>
 
+        <!-- VIEW DETAIL PENGGUNA -->
         <div id="view-detail" class="view-detail">
             <button id="btn-kembali">← Kembali</button>
             <h2>Detail Pengguna</h2>
