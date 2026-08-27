@@ -10,65 +10,71 @@
 
 <body>
     <section>
-        <h1>User Dashboard</h1>
 
-        <div class="control-box">
-            <input type="text" id="input-cari" placeholder="Cari nama pengguna..." />
+        <div class="header-banner">
+            <h1>User Dashboard & Blog</h1>
             <button id="btn-tema">🌙 Mode Gelap</button>
         </div>
 
         <p id="notifikasi" class="notif-pesan"></p>
 
-        <!-- VIEW DAFTAR PENGGUNA -->
-        <div id="view-daftar">
-            <h2>Daftar Pengguna</h2>
-            <div id="user-card-container" class="card-container">
-                <!-- Dimuat via JavaScript -->
+        <div class="kolom-kiri">
+
+            <div id="view-daftar">
+                <h2>👥 Daftar Pengguna</h2>
+                
+                <div class="control-box">
+                    <input type="text" id="input-cari" placeholder="🔍 Cari nama pengguna..." />
+                </div>
+
+                <div id="user-card-container" class="card-container">
+                    <!-- Dimuat via JavaScript -->
+                </div>
+            </div>
+
+            <div id="view-detail" class="view-detail">
+                <button id="btn-kembali">← Kembali ke Daftar</button>
+                <h2>Detail Pengguna</h2>
+                <div class="detail-box">
+                    <p>Nama       : <span id="detail-nama"></span></p>
+                    <p>Email      : <span id="detail-email"></span></p>
+                    <p>Telepon    : <span id="detail-telepon"></span></p>
+                    <p>Website    : <span id="detail-website"></span></p>
+                    <p>Perusahaan : <span id="detail-perusahaan"></span></p>
+                    <p>Alamat     : <span id="detail-alamat"></span></p>
+                </div>
+                <button id="btn-salin-email">Salin Email</button>
             </div>
         </div>
 
-        <!-- BLOG SECTION (FITUR BARU) -->
-        <div class="blog-section" id="blog-section">
-            <h2>Kelola Artikel (Blog)</h2>
+        <div class="kolom-kanan">
+            <div class="blog-section" id="blog-section">
+                <h2>📝 Kelola Artikel (Blog)</h2>
 
-            <form id="article-form" class="article-form">
-                <input type="hidden" id="article-id" value="" />
-                <div class="form-group">
-                    <input type="text" id="article-title" class="article-title" placeholder="Judul Artikel..." required />
+                <form id="article-form" class="article-form">
+                    <input type="hidden" id="article-id" value="" />
+                    <div class="form-group">
+                        <input type="text" id="article-title" class="article-title" placeholder="Judul Artikel..." required />
+                    </div>
+                    <div class="form-group">
+                        <textarea id="article-body" class="article-body" rows="3" placeholder="Isi Artikel..." required></textarea>
+                    </div>
+                    <div id="btn-article" class="btn-article-group">
+                        <button type="submit" id="btn-submit-article" class="btn-submit-article">Simpan Artikel</button>
+                        <button type="button" id="btn-cancel-article" class="btn-cancel-article" style="display: none;">Batal Edit</button>
+                    </div>
+                </form>
+
+                <div class="div-cari-article">
+                    <input type="text" id="input-cari-article" class="input-cari-article" placeholder="🔍 Cari judul artikel...">
                 </div>
-                <div class="form-group">
-                    <textarea id="article-body" class="article-body" rows="3" placeholder="Isi Artikel..." required></textarea>
+
+                <p id="notif-article" class="notif-pesan"></p>
+
+                <div id="article-list-container" class="card-container">
+                    <!-- Artikel dimuat lewat JS -->
                 </div>
-                <div id="btn-article" class="btn-article-group">
-                    <button type="submit" id="btn-submit-article" class="btn-submit-article">Simpan Artikel</button>
-                    <button type="button" id="btn-cancel-article" class="btn-cancel-article" style="display: none;">Batal Edit</button>
-                </div>
-            </form>
-
-            <div class="div-cari-article">
-                <input type="text" id="input-cari-article" class="input-cari-article" placeholder="🔍 Cari judul artikel...">
             </div>
-
-            <p id="notif-article" class="notif-pesan"></p>
-
-            <div id="article-list-container" class="card-container">
-                <!-- Artikel dimuat lewat JS -->
-            </div>
-        </div>
-
-        <!-- VIEW DETAIL PENGGUNA -->
-        <div id="view-detail" class="view-detail">
-            <button id="btn-kembali">← Kembali</button>
-            <h2>Detail Pengguna</h2>
-            <div class="detail-box">
-                <p>Nama       : <span id="detail-nama"></span></p>
-                <p>Email      : <span id="detail-email"></span></p>
-                <p>Telepon    : <span id="detail-telepon"></span></p>
-                <p>Website    : <span id="detail-website"></span></p>
-                <p>Perusahaan : <span id="detail-perusahaan"></span></p>
-                <p>Alamat     : <span id="detail-alamat"></span></p>
-            </div>
-            <button id="btn-salin-email">Salin Email</button>
         </div>
     </section>
 

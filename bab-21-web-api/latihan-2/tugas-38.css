@@ -16,14 +16,13 @@ body {
     radial-gradient(at 0% 0%, rgba(56, 189, 248, 0.08) 0px, transparent 50%),
     radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.08) 0px, transparent 50%);
   color: #0f172a;
+  min-height: 100vh;
   display: flex;
   justify-content: center;
-  align-items: center;
-  min-height: 100vh;
-  padding: 24px 16px;
+  align-items: flex-start;
+  padding: 30px 20px;
 }
 
-/* DARK MODE BODY */
 body.dark-mode {
   background-color: #090d16;
   background-image: 
@@ -37,12 +36,16 @@ section {
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   padding: 28px;
-  border-radius: 20px;
+  border-radius: 24px;
   border: 1px solid rgba(226, 232, 240, 0.8);
-  box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.05), 
-              0 8px 10px -6px rgba(15, 23, 42, 0.01);
+  box-shadow: 0 25px 50px -12px rgba(15, 23, 42, 0.08);
   width: 100%;
-  max-width: 520px;
+  max-width: 1050px;
+  
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 28px;
+  align-items: start;
 }
 
 body.dark-mode section {
@@ -51,60 +54,51 @@ body.dark-mode section {
   box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
 }
 
-/* TITLE UTAMA */
+.header-banner {
+  grid-column: 1 / -1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 14px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+body.dark-mode .header-banner {
+  border-bottom-color: #1e293b;
+}
+
 h1 {
-  font-size: 1.35rem;
+  font-size: 1.4rem;
   font-weight: 800;
   letter-spacing: -0.5px;
   color: #0284c7;
-  margin-bottom: 20px;
-  padding-bottom: 12px;
-  border-bottom: 1px solid #e2e8f0;
-  display: flex;
-  align-items: center;
-  gap: 8px;
 }
 
 body.dark-mode h1 {
   color: #38bdf8;
-  border-bottom-color: #1e293b;
 }
 
-/* CONTROL BOX */
-.control-box {
-  display: flex;
-  gap: 10px;
-  margin-bottom: 20px;
+.notif-pesan {
+  grid-column: 1 / -1;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: #f59e0b;
 }
 
-#input-cari {
-  flex: 1;
-  padding: 10px 16px;
-  background: #ffffff;
-  border: 1px solid #cbd5e1;
-  border-radius: 10px;
-  font-size: 0.88rem;
-  color: #0f172a;
-  outline: none;
+h2 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #64748b;
+  margin-bottom: 14px;
 }
 
-body.dark-mode #input-cari {
-  background: #0b0f19;
-  border-color: #1e293b;
-  color: #f8fafc;
+body.dark-mode h2 {
+  color: #94a3b8;
 }
 
-#input-cari:focus {
-  border-color: #0284c7;
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
-}
-
-body.dark-mode #input-cari:focus {
-  border-color: #38bdf8;
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
-}
-
-/* TOMBOL AKSIS UTAMA */
+/* BUTTONS TEMA & SALIN */
 #btn-tema, #btn-kembali, #btn-salin-email {
   background: #0f172a;
   color: #ffffff;
@@ -114,15 +108,10 @@ body.dark-mode #input-cari:focus {
   cursor: pointer;
   font-size: 0.82rem;
   font-weight: 600;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
 }
 
 #btn-tema:hover, #btn-kembali:hover, #btn-salin-email:hover {
   background: #0284c7;
-  transform: translateY(-1px);
 }
 
 body.dark-mode #btn-tema, 
@@ -139,28 +128,31 @@ body.dark-mode #btn-salin-email:hover {
   color: #090d16;
 }
 
-/* NOTIFIKASI */
-.notif-pesan {
-  font-size: 0.85rem;
-  font-weight: 500;
-  color: #f59e0b;
+.kolom-kiri {
+  grid-column: 1;
+}
+
+.control-box {
   margin-bottom: 14px;
 }
 
-h2 {
-  font-size: 0.95rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.5px;
-  color: #64748b;
-  margin-bottom: 14px;
+#input-cari {
+  width: 100%;
+  padding: 10px 14px;
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 10px;
+  font-size: 0.88rem;
+  color: #0f172a;
+  outline: none;
 }
 
-body.dark-mode h2 {
-  color: #94a3b8;
+body.dark-mode #input-cari {
+  background: #0b0f19;
+  border-color: #1e293b;
+  color: #f8fafc;
 }
 
-/* KARTU PENGGUNA LIST */
 .card-container {
   display: flex;
   flex-direction: column;
@@ -183,12 +175,10 @@ body.dark-mode .user-card {
 .user-card:hover {
   transform: translateY(-2px);
   border-color: #0284c7;
-  box-shadow: 0 10px 15px -3px rgba(2, 132, 199, 0.1);
 }
 
 body.dark-mode .user-card:hover {
   border-color: #38bdf8;
-  box-shadow: 0 10px 15px -3px rgba(56, 189, 248, 0.15);
 }
 
 .user-card-header {
@@ -208,29 +198,18 @@ body.dark-mode .user-name {
   color: #f8fafc;
 }
 
-/* BINTANG FAVORIT */
 .btn-fav {
   background: none;
   border: none;
   font-size: 1.25rem;
   color: #f59e0b;
   cursor: pointer;
-  line-height: 1;
-  padding: 2px 4px;
-  border-radius: 6px;
-}
-
-.btn-fav:hover {
-  transform: scale(1.2);
 }
 
 .user-email, .user-company {
   font-size: 0.82rem;
   color: #64748b;
   margin-bottom: 3px;
-  display: flex;
-  align-items: center;
-  gap: 6px;
 }
 
 body.dark-mode .user-email, 
@@ -272,16 +251,9 @@ body.dark-mode .detail-box p {
   border-bottom-color: #1e293b;
 }
 
-.detail-box p:last-child {
-  border-bottom: none;
-  padding-bottom: 0;
-}
-
 .detail-box span {
   font-weight: 600;
   color: #0f172a;
-  text-align: right;
-  max-width: 60%;
 }
 
 body.dark-mode .detail-box span {
@@ -292,14 +264,8 @@ body.dark-mode .detail-box span {
   width: 100%;
 }
 
-.blog-section {
-  margin-top: 32px;
-  padding-top: 20px;
-  border-top: 1px solid #e2e8f0;
-}
-
-body.dark-mode .blog-section {
-  border-top-color: #1e293b;
+.kolom-kanan {
+  grid-column: 2;
 }
 
 .article-form {
@@ -338,18 +304,6 @@ body.dark-mode .input-cari-article {
   color: #f8fafc;
 }
 
-.article-title:focus, .article-body:focus, .input-cari-article:focus {
-  border-color: #0284c7;
-  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.15);
-}
-
-body.dark-mode .article-title:focus, 
-body.dark-mode .article-body:focus, 
-body.dark-mode .input-cari-article:focus {
-  border-color: #38bdf8;
-  box-shadow: 0 0 0 3px rgba(56, 189, 248, 0.15);
-}
-
 .btn-article-group {
   display: flex;
   gap: 8px;
@@ -369,21 +323,13 @@ body.dark-mode .input-cari-article:focus {
   color: white;
 }
 
-.btn-submit-article:hover {
-  background: #0369a1;
-}
-
 .btn-cancel-article {
   background: #64748b;
   color: white;
 }
 
-.btn-cancel-article:hover {
-  background: #475569;
-}
-
 .div-cari-article {
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .article-action-buttons {
@@ -405,21 +351,19 @@ body.dark-mode .input-cari-article:focus {
 .btn-edit-art {
   background: rgba(245, 158, 11, 0.15);
   color: #d97706;
-  border: 1px solid rgba(245, 158, 11, 0.3);
-}
-
-.btn-edit-art:hover {
-  background: #f59e0b;
-  color: white;
 }
 
 .btn-delete-art {
   background: rgba(239, 68, 68, 0.15);
   color: #ef4444;
-  border: 1px solid rgba(239, 68, 68, 0.3);
 }
 
-.btn-delete-art:hover {
-  background: #ef4444;
-  color: white;
+/* RESPONSIVE LAYAR HP */
+@media (max-width: 768px) {
+  section {
+    grid-template-columns: 1fr;
+  }
+  .kolom-kiri, .kolom-kanan {
+    grid-column: 1;
+  }
 }
